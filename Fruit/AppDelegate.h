@@ -2,18 +2,14 @@
 //  AppDelegate.h
 //  Fruit
 //
-//  Created by Build User on 1/28/14.
-//  Copyright (c) 2014 Pitt. All rights reserved.
+//  Created by Kryvenko, Maksym on 2/9/14.
+//  Copyright (c) 2014 Kryvenko, Maksym. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) ViewController *viewController;
 
 @end

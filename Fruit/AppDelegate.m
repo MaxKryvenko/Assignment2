@@ -2,51 +2,25 @@
 //  AppDelegate.m
 //  Fruit
 //
-//  Created by Build User on 1/28/14.
-//  Copyright (c) 2014 Pitt. All rights reserved.
+//  Created by Kryvenko, Maksym on 2/9/14.
+//  Copyright (c) 2014 Kryvenko, Maksym. All rights reserved.
 //
 
 #import "AppDelegate.h"
-
-#import "ViewController.h"
-
-#import "Apple.h"
-#import "GrannySmith.h"
-#import "Fruit.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-    
-    
-    
-    
-    Apple * anApple = [[Apple alloc] init];
-    GrannySmith *notherApple = [[GrannySmith alloc] init];
-    
-
-    Fruit * aBanana = [[Fruit alloc] initWithName:@"Banana"  andShape:@"Curved" andColor:@"Yellow"];
-    Fruit * aGrape = [[Fruit alloc] initWithName:@"Grape" andShape:@"Round" andColor:@"Purple"];
-    
-    NSLog(@"%@ is %@ and %@.", [notherApple name], [notherApple shape], [notherApple color]);
-    NSLog(@"%@ is %@ and %@.", [anApple name], [anApple shape], [anApple color]);
-    
-    NSLog(@"%@", [aBanana printSelf]);
-    NSLog(@"%@", [notherApple printSelf]);
-    //NSLog(@"%@ is %@ and %@.", aBanana.name, aBanana.shape, aBanana.color);
-    NSLog(@"%@ is %@ and %@.", [aGrape name], [aGrape shape], [aGrape color]);
-    
-
-    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+        splitViewController.delegate = (id)navigationController.topViewController;
+    }
     return YES;
 }
-
+							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
